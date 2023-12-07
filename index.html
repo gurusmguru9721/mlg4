@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>
+        <center>GURU CODE HUB</center>
+    </h1>
+    <h1>
+        <center>ML 4</center>
+    </h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Copy to Clipboard</title>
+</head>
+<body>
+
+    <div>
+        <h3>Section 1</h3>
+        <textarea id="copyText1" rows="4" cols="50">
+            #Data Pre-processing Step 
+            # importing libraries 
+            import numpy as nm 
+            import matplotlib.pyplot as mtp 
+            import pandas as pd</textarea>
+        <button onclick="copyToClipboard('copyText1')">Copy Text</button>
+    </div>
+
+    <div>
+        <h3>Section 2</h3>
+        <textarea id="copyText2" rows="4" cols="50">
+            #importing datasets 
+            data_set= pd.read_csv('user_data.csv') </textarea>
+        <button onclick="copyToClipboard('copyText2')">Copy Text</button>
+    </div>
+
+    <div>
+        <h3>Section 3</h3>
+        <textarea id="copyText3" rows="4" cols="50">
+            #Extracting Independent and dependent Variable 
+x= data_set.iloc[:, [2,3]].values 
+y= data_set.iloc[:, 4].values 
+</textarea>
+        <button onclick="copyToClipboard('copyText3')">Copy Text</button>
+    </div>
+
+
+    <div>
+        <h3>Section 4</h3>
+        <textarea id="copyText4" rows="4" cols="50">
+            from sklearn.model_selection import train_test_split 
+            x_train, x_test, y_train, y_test= train_test_split(x, y, test_size= 0.25, random_state=0)</textarea>
+        <button onclick="copyToClipboard('copyText4')">Copy Text</button>
+    </div>
+
+    <div>
+        <h3>Section 5</h3>
+        <textarea id="copyText5" rows="4" cols="50">
+            #feature Scaling 
+            from sklearn.preprocessing import StandardScaler 
+            st_x= StandardScaler() 
+            x_train= st_x.fit_transform(x_train) 
+            x_test= st_x.transform(x_test) </textarea>
+        <button onclick="copyToClipboard('copyText5')">Copy Text</button>
+    </div>
+
+
+
+    <div>
+        <h3>Section 6</h3>
+        <textarea id="copyText6" rows="4" cols="50">
+           from sklearn.svm import SVC # "Support vector classifier" 
+classifier = SVC(kernel='linear', random_state=0) 
+classifier.fit(x_train, y_train) </textarea>
+        <button onclick="copyToClipboard('copyText6')">Copy Text</button>
+    </div>
+
+
+
+    <div>
+        <h3>Section 7</h3>
+        <textarea id="copyText7" rows="4" cols="50">
+            y_pred= classifier.predict(x_test)</textarea>
+        <button onclick="copyToClipboard('copyText7')">Copy Text</button>
+    </div>
+
+
+
+    <div>
+        <h3>Section 8</h3>
+        <textarea id="copyText8" rows="4" cols="50">
+            #Creating the Confusion matrix 
+from sklearn.metrics import confusion_matrix 
+cm= confusion_matrix(y_test, y_pred)</textarea>
+        <button onclick="copyToClipboard('copyText8')">Copy Text</button>
+    </div>
+
+
+
+    <div>
+        <h3>Section 9</h3>
+        <textarea id="copyText9" rows="4" cols="50">
+            from matplotlib.colors import ListedColormap 
+            x_set, y_set = x_train, y_train 
+            x1, x2 = nm.meshgrid(nm.arange(start = x_set[:, 0].min() - 1, stop = x_set[:, 0].max() + 1, step 
+            =0.01), 
+            nm.arange(start = x_set[:, 1].min() - 1, stop = x_set[:, 1].max() + 1, step = 0.01)) 
+            mtp.contourf(x1, x2, classifier.predict(nm.array([x1.ravel(), 
+            x2.ravel()]).T).reshape(x1.shape), 
+            alpha = 0.75, cmap = ListedColormap(('red', 'green'))) 
+            mtp.xlim(x1.min(), x1.max()) 
+            mtp.ylim(x2.min(), x2.max()) 
+            for i, j in enumerate(nm.unique(y_set)): 
+             mtp.scatter(x_set[y_set == j, 0], x_set[y_set == j, 1], 
+             c = ListedColormap(('red', 'green'))(i), label = j) 
+            mtp.title('SVM classifier (Training set)') 
+            mtp.xlabel('Age') 
+            mtp.ylabel('Estimated Salary') 
+            mtp.legend() 
+            mtp.show() 
+            </textarea>
+        <button onclick="copyToClipboard('copyText9')">Copy Text</button>
+    </div>
+
+
+
+    <div>
+        <h3>Section 10</h3>
+        <textarea id="copyText10" rows="4" cols="50">#Visulaizing the test set result 
+            #Visulaizing the test set result 
+from matplotlib.colors import ListedColormap 
+x_set, y_set = x_test, y_test 
+x1, x2 = nm.meshgrid(nm.arange(start = x_set[:, 0].min() - 1, stop = x_set[:, 0].max() + 1, step 
+=0.01), 
+nm.arange(start = x_set[:, 1].min() - 1, stop = x_set[:, 1].max() + 1, step = 0.01)) 
+mtp.contourf(x1, x2, classifier.predict(nm.array([x1.ravel(), 
+x2.ravel()]).T).reshape(x1.shape), 
+alpha = 0.75, cmap = ListedColormap(('red','green' ))) 
+mtp.xlim(x1.min(), x1.max()) 
+mtp.ylim(x2.min(), x2.max()) 
+for i, j in enumerate(nm.unique(y_set)): 
+ mtp.scatter(x_set[y_set == j, 0], x_set[y_set == j, 1], 
+ c = ListedColormap(('red', 'green'))(i), label = j) 
+mtp.title('SVM classifier (Test set)') 
+mtp.xlabel('Age') 
+mtp.ylabel('Estimated Salary') 
+mtp.legend() 
+mtp.show() 
+</textarea>
+        <button onclick="copyToClipboard('copyText10')">Copy Text</button>
+    </div>
+
+
+
+
+
+
+
+    <!-- Add more sections as needed -->
+
+    <script>
+        function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId);
+            copyText.select();
+            document.execCommand("copy");
+            alert("Text copied to clipboard: " + copyText.value);
+        }
+    </script>
+
+</body>
+</html>
